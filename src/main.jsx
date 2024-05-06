@@ -5,11 +5,36 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
+import Root from './Layout/Root';
+import Home from './Pages/Home/Home';
+import AddItems from './Pages/AddItems/AddItems';
+import Cart from './Pages/Cart/Cart';
+import ErrorPage from './Pages/Error/ErrorPage';
+import Update from './Pages/Update/Update';
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <div className='text-6xl'>Hello world!</div>,
+    element: <Root/>,
+    errorElement:<ErrorPage/>,
+    children: [
+      {
+        path:'/',
+        element: <Home/> ,
+      },
+      {
+        path:'/add',
+        element: <AddItems/> ,
+      },
+      {
+        path:'/cart',
+        element: <Cart/> ,
+      },
+      {
+        path:'/update',
+        element: <Update/> ,
+      },
+    ]
   },
 ]);
 
