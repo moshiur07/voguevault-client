@@ -1,14 +1,42 @@
+import Swal from 'sweetalert2'
+
 
 const AddItems = () => {
-    const handleAddProduct = e =>{
+    const handleAddProduct = e => {
         e.preventDefault()
         const form = e.target
+
+        const name = form.name?.value
+        const brand = form.brand?.value
         const url = form.url?.value
         const price = form.price?.value
         const rating = form.rating?.value
         const description = form.description?.value
         const category = form.category?.value
-        console.log(form,url,price,rating,description,category);
+
+        const productDetails = { name, url, brand, price, rating, description, category }
+
+        fetch('http://localhost:5000/products', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(productDetails)
+        })
+            .then(res => res.json())
+            .then(data => { 
+                console.log(data);
+                if(data.acknowledged){
+                    Swal.fire({
+                    title: 'Success!',
+                    text: 'PRoduct Added Successfully!',
+                    icon: 'success',
+                    confirmButtonText: 'Ok'
+                  })
+                }
+             })
+
+
     }
     return (
         <section className="bg-white dark:bg-gray-900">
