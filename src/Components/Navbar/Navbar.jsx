@@ -25,7 +25,7 @@ const Navbar = () => {
                 : isPending
                     ? "pending"
                     : ""
-        } to='/cart'>MyCart</NavLink></li>
+        } to='/carts'>MyCart</NavLink></li>
     </>
     return (
         <div className="navbar bg-gradient-to-r from-[#4e6a57] to-[#639566]  rounded-md shadow-xl">

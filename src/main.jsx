@@ -9,8 +9,10 @@ import Root from './Layout/Root';
 import Home from './Pages/Home/Home';
 import AddItems from './Pages/AddItems/AddItems';
 import Cart from './Pages/Cart/Cart';
+import Details from './Pages/Details/Details';
 import ErrorPage from './Pages/Error/ErrorPage';
 import Update from './Pages/Update/Update';
+import SIngleBrand from './Pages/SingleBrandProducts/SIngleBrand';
 
 const router = createBrowserRouter([
   {
@@ -27,12 +29,24 @@ const router = createBrowserRouter([
         element: <AddItems/> ,
       },
       {
-        path:'/cart',
+        path:'/carts',
         element: <Cart/> ,
+        loader: ()=> fetch('http://localhost:5000/carts'),
       },
       {
-        path:'/update',
+        path:'/update/:id',
         element: <Update/> ,
+        loader: ({params})=> fetch(`http://localhost:5000/update/${params.id}`),
+      },
+      {
+        path:'/details/:id',
+        element: <Details/> ,
+        loader: ({params})=> fetch(`http://localhost:5000/details/${params.id}`),
+      },
+      {
+        path:'/products/:name',
+        element: <SIngleBrand/> ,
+        loader: ({params})=> fetch(`http://localhost:5000/products/${params.name}`)
       },
     ]
   },

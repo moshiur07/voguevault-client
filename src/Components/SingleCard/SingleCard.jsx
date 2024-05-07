@@ -1,18 +1,21 @@
+import { Link } from "react-router-dom";
 
 const SingleCard = ({ product }) => {
-
-    const { name, url, brand, price, rating, description, category } = product
+    const { _id, name, url, brand, price, rating, category } = product
     return (
 
-        <div className="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-            <a href="#">
-                <img className="p-8 rounded-t-lg" src={url} alt="product image" />
-            </a>
-            <div className="px-5 pb-5">
-                <a href="#">
-                    <h5 className="text-xl font-semibold tracking-tight text-gray-900 dark:text-white">{name || brand}</h5>
-                </a>
-                <div className="flex items-center mt-2.5 mb-5">
+        <div className="w-full  bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+            <div>
+                <img className=" rounded-t-lg w-full h-[350px]" src={url} alt="product image" />
+            </div>
+            <div className="p-5">
+                <h5 className="text-xl font-semibold tracking-tight text-gray-900 dark:text-white">{name}</h5>
+                <div className="flex gap-2 my-2">
+                    {/* Badge */}
+                    <p className='rounded-lg px-3 py-1 bg-gradient-to-r from-[#355aec] to-[#24a5df] w-max font-semibold text-white'>{brand}</p>
+                    <p className='rounded-lg px-3 py-1 bg-gradient-to-r from-[#355aec] to-[#24a5df] w-max font-semibold text-white'>{category}</p>
+                </div>
+                <div className="flex items-center mt-2.5 my-2">
                     {/* Rating */}
                     <div className="flex items-center space-x-1 rtl:space-x-reverse">
                         <svg className="w-4 h-4 text-yellow-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
@@ -33,12 +36,18 @@ const SingleCard = ({ product }) => {
                     </div>
                     <span className="bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800 ms-3">{rating}</span>
                 </div>
-                <div className="flex items-center justify-between">
+                <div className="flex items-center justify-between my-2">
                     {/* Price */}
-                    <span className="text-3xl font-bold text-gray-900 dark:text-white">{price}</span>
+                    <span className="text-3xl font-bold text-gray-900 dark:text-white">${price}</span>
                     {/* Add to cart */}
-                    <a href="#" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Update</a>
-                    <a href="#" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Details</a>
+                    <div className="space-x-2">
+                        <Link to={`/update/${_id}`}>
+                            <button className=" px-4 py-3  font-medium text-center text-white bg-gradient-to-r from-[#4e6a57] to-[#639566] rounded-lg">Update</button>
+                        </Link>
+                        <Link to={`/details/${_id}`}>
+                            <button className=" px-4 py-3  font-medium text-center text-white bg-gradient-to-r from-[#4e6a57] to-[#639566] rounded-lg">Details</button>
+                        </Link>
+                    </div>
                 </div>
             </div>
         </div>

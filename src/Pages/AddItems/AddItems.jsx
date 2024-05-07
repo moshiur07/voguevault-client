@@ -4,6 +4,7 @@ import Swal from 'sweetalert2'
 const AddItems = () => {
     const handleAddProduct = e => {
         e.preventDefault()
+
         const form = e.target
 
         const name = form.name?.value
@@ -13,6 +14,7 @@ const AddItems = () => {
         const rating = form.rating?.value
         const description = form.description?.value
         const category = form.category?.value
+        
 
         const productDetails = { name, url, brand, price, rating, description, category }
 
@@ -24,17 +26,18 @@ const AddItems = () => {
             body: JSON.stringify(productDetails)
         })
             .then(res => res.json())
-            .then(data => { 
+            .then(data => {
                 console.log(data);
-                if(data.acknowledged){
+                if (data.acknowledged) {
+                    form.reset()
                     Swal.fire({
-                    title: 'Success!',
-                    text: 'PRoduct Added Successfully!',
-                    icon: 'success',
-                    confirmButtonText: 'Ok'
-                  })
+                        title: 'Success!',
+                        text: 'PRoduct Added Successfully!',
+                        icon: 'success',
+                        confirmButtonText: 'Ok'
+                    })
                 }
-             })
+            })
 
 
     }
@@ -44,9 +47,9 @@ const AddItems = () => {
                 <h2 className="mb-4 text-xl font-bold text-gray-900 dark:text-white">Add a new product</h2>
                 <form onSubmit={handleAddProduct}>
                     <div className="grid gap-4 sm:grid-cols-2 sm:gap-6">
-                        <div className="sm:col-span-2">
+                        <div className="">
                             <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Image url</label>
-                            <input type="url" name="url" id="name" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="image url" required=""></input>
+                            <input type="url" name="url" id="url" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="image url" required=""></input>
                         </div>
                         <div className="sm:col-span-2">
                             <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Product Name</label>
@@ -54,7 +57,15 @@ const AddItems = () => {
                         </div>
                         <div className="w-full">
                             <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Brand</label>
-                            <input type="text" name="brand" id="brand" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Product brand" required=""></input>
+                            <select type="text" name="brand" id="brand" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Product brand" required="">
+                                <option selected="">Select Brand</option>
+                                <option value="Nike">Nike</option>
+                                <option value="Adidas">Adidas</option>
+                                <option value="Gucci">Gucci</option>
+                                <option value="H&M">H&M</option>
+                                <option value="ZARA">ZARA</option>
+                                <option value="Levis">Levis</option>
+                            </select>
                         </div>
                         <div className="w-full">
                             <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Price</label>
@@ -81,7 +92,7 @@ const AddItems = () => {
                             <textarea name="description" id="description" rows="5" className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Your description here"></textarea>
                         </div>
                     </div>
-                    <button type="submit" className="inline-flex items-center px-5 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center text-white bg-primary-700 rounded-lg focus:ring-4 focus:ring-primary-200 dark:focus:ring-primary-900 hover:bg-primary-800">
+                    <button type="submit" className="px-4 py-3  font-medium text-center text-white bg-gradient-to-r from-[#4e6a57] to-[#639566] rounded-lg">
                         Add product
                     </button>
                 </form>
