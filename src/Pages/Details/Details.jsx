@@ -7,6 +7,7 @@ const Details = () => {
     const { url, price, rating, description, category, name, brand } = loadedData
 
     const handleCart = () =>{
+        
         fetch('http://localhost:5000/carts',{
             method:"POST",
             headers:{
