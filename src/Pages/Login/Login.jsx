@@ -1,25 +1,26 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Context/AuthProvider";
 import { useContext } from "react";
 import Swal from "sweetalert2";
 
 const Login = () => {
     const {login} = useContext(AuthContext)
+    const navigate = useNavigate()
     const handleLogin = e =>{
         e.preventDefault()
         const form = e.target
         const email = form.email.value
         const password = form.password.value
-        console.log(email,password);
         login(email,password)
             .then(res =>{
-                console.log(res.user);
                 Swal.fire({
                     title: 'Success!',
                     text: 'User login Successfully!',
                     icon: 'success',
                     confirmButtonText: 'Ok'
                 })
+                
+           navigate(location?.state ? location.state : '/')  
             })
             .catch(error => {
                 const msg = error.message

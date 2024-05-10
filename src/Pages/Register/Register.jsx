@@ -12,7 +12,6 @@ const Register = () => {
     const handleSignUpEmail = e => {
         e.preventDefault()
         const form = e.target
-        const name = form.name.value
         const email = form.email.value
         const password = form.password.value
 
@@ -20,7 +19,6 @@ const Register = () => {
         if (passwordRegex.test(password)) {
             createUser(email, password)
                 .then(res => {
-                    console.log(res.user);
                     Swal.fire({
                         title: 'Success!',
                         text: 'User Created Successfully!',
@@ -49,7 +47,6 @@ const Register = () => {
     const handleGoogle = ()=>{
         googleSignin()
         .then(res => {
-            console.log(res.user);
             Swal.fire({
                 title: 'Success!',
                 text: 'User Created Successfully!',
@@ -70,7 +67,6 @@ const Register = () => {
     const handleGithub = ()=>{
         handleGithub()
         .then(res => {
-            console.log(res.user);
             Swal.fire({
                 title: 'Success!',
                 text: 'User Created Successfully!',
@@ -91,7 +87,6 @@ const Register = () => {
     const handleFacebook = ()=>{
         googleSignin()
         .then(res => {
-            console.log(res.user);
             Swal.fire({
                 title: 'Success!',
                 text: 'User Created Successfully!',

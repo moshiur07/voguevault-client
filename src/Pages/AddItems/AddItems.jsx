@@ -27,7 +27,6 @@ const AddItems = () => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data);
                 if (data.acknowledged) {
                     form.reset()
                     Swal.fire({
@@ -81,6 +80,7 @@ const AddItems = () => {
                                 <option value="Shoes">Shoes</option>
                                 <option value="Sunglass">Sunglass</option>
                                 <option value="Wallet">Wallet</option>
+                                <option value="Perfume">Perfume</option>
                             </select>
                         </div>
                         <div>

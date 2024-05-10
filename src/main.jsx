@@ -16,6 +16,7 @@ import ErrorPage from './Pages/Error/ErrorPage';
 import Update from './Pages/Update/Update';
 import SIngleBrand from './Pages/SingleBrandProducts/SIngleBrand';
 import AuthProvider from './Context/AuthProvider';
+import PrivateRoute from './Private/PrivateRoute'
 
 const router = createBrowserRouter([
   {
@@ -29,7 +30,7 @@ const router = createBrowserRouter([
       },
       {
         path:'/add',
-        element: <AddItems/> ,
+        element: <PrivateRoute><AddItems/></PrivateRoute>,
       },
       {
         path:'/register',
@@ -41,12 +42,12 @@ const router = createBrowserRouter([
       },
       {
         path:'/carts',
-        element: <Cart/> ,
+        element: <PrivateRoute><Cart/></PrivateRoute> ,
         loader: ()=> fetch('http://localhost:5000/carts'),
       },
       {
         path:'/update/:id',
-        element: <Update/> ,
+        element: <PrivateRoute><Update/> </PrivateRoute>,
         loader: ({params})=> fetch(`http://localhost:5000/update/${params.id}`),
       },
       {

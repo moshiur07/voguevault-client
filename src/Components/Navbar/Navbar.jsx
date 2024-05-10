@@ -99,7 +99,7 @@ const Navbar = () => {
                     </>
                         : <>
                             <span><FaRegCircleUser className="text-3xl " /></span>
-                            <button className="flex items-center gap-1 border px-3 py-2"><Link to='/login'>Login</Link></button>
+                            <button className="flex items-center gap-1 border px-3 py-2 rounded-lg hover:text-white hover:bg-blue-400"><Link to='/login'>Login</Link></button>
                         </>
                 }
             </div>
