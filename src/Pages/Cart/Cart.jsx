@@ -8,7 +8,7 @@ const Cart = () => {
 
 
     const handleDelete = (_id) => {
-        fetch(`http://localhost:5000/carts/${_id}`, {
+        fetch(`https://voguevault20-moshiur-rahmans-projects-36adf0df.vercel.app/carts/${_id}`, {
             method: "DELETE"
         })
             .then(res => res.json())

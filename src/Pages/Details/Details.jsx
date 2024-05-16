@@ -13,7 +13,7 @@ const Details = () => {
         
 
 
-       user ? fetch('http://localhost:5000/carts', {
+       user ? fetch('https://voguevault20-moshiur-rahmans-projects-36adf0df.vercel.app/carts', {
             method: "POST",
             headers: {
                 "content-type": "application/json"

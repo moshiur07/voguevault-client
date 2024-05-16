@@ -43,22 +43,22 @@ const router = createBrowserRouter([
       {
         path:'/carts',
         element: <PrivateRoute><Cart/></PrivateRoute> ,
-        loader: ()=> fetch('http://localhost:5000/carts'),
+        loader: ()=> fetch('https://voguevault20-moshiur-rahmans-projects-36adf0df.vercel.app/carts'),
       },
       {
         path:'/update/:id',
         element: <PrivateRoute><Update/> </PrivateRoute>,
-        loader: ({params})=> fetch(`http://localhost:5000/update/${params.id}`),
+        loader: ({params})=> fetch(`https://voguevault20-moshiur-rahmans-projects-36adf0df.vercel.app/update/${params.id}`),
       },
       {
         path:'/details/:id',
         element: <Details/> ,
-        loader: ({params})=> fetch(`http://localhost:5000/details/${params.id}`),
+        loader: ({params})=> fetch(`https://voguevault20-moshiur-rahmans-projects-36adf0df.vercel.app/details/${params.id}`),
       },
       {
         path:'/products/:name',
         element: <SIngleBrand/> ,
-        loader: ({params})=> fetch(`http://localhost:5000/products/${params.name}`)
+        loader: ({params})=> fetch(`https://voguevault20-moshiur-rahmans-projects-36adf0df.vercel.app/products/${params.name}`)
       },
     ]
   },

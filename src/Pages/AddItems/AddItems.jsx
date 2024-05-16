@@ -18,7 +18,7 @@ const AddItems = () => {
 
         const productDetails = { name, url, brand, price, rating, description, category }
 
-        fetch('http://localhost:5000/products', {
+        fetch('https://voguevault20-moshiur-rahmans-projects-36adf0df.vercel.app/products', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
